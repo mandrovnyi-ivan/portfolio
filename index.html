@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Іван Мандровний</title>
+<meta name="description" content="Придумую рекламу українським брендам. Здебільшого без запиту з їхнього боку.">
+<style>
+  :root {
+    --bg: #1a1a1c;
+    --panel: #232326;
+    --text: #ededee;
+    --muted: #93939a;
+    --line: #313136;
+    --radius: 20px;
+  }
+  html[data-theme="light"] {
+    --bg: #f4f4f2;
+    --panel: #ffffff;
+    --text: #17171a;
+    --muted: #77777e;
+    --line: #e3e3e0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.375;
+    -webkit-font-smoothing: antialiased;
+    transition: background .25s ease, color .25s ease;
+  }
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1054px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 330px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* ---------- ЛІВА КОЛОНКА ---------- */
+  .side {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 64px 0 56px;
+  }
+  .pagenav {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 22px;
+    font-size: 14px;
+  }
+  .pagenav a { color: var(--muted); text-decoration: none; }
+  .pagenav a.active { color: var(--text); }
+  .pagenav a:hover { color: var(--text); }
+
+  .head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 34px;
+  }
+  .portrait {
+    position: relative;
+    width: 236px; height: 236px;
+    margin: -26px 0 0 -18px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, rgba(0,0,0,.62) 58%, rgba(0,0,0,.22) 73%, transparent 86%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 38%, rgba(0,0,0,.62) 58%, rgba(0,0,0,.22) 73%, transparent 86%);
+  }
+  .portrait img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+    opacity: 0; pointer-events: none;
+  }
+  .portrait img.on { opacity: 1; }
+
+  .toggle {
+    flex: none;
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .toggle svg { display: block; }
+  html[data-theme="light"] .i-moon { display: none; }
+  html[data-theme="dark"]  .i-sun  { display: none; }
+
+  .name {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.375;
+    margin-bottom: 44px;
+  }
+  .label {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .block { margin-bottom: 44px; }
+
+  .contact-btn {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 16px;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  .contact-btn:hover { opacity: .85; }
+  .contact-btn kbd {
+    position: absolute; right: 12px;
+    font-family: inherit; font-size: 12px;
+    border: 1px solid rgba(128,128,128,.4);
+    border-radius: 5px;
+    padding: 2px 7px;
+    opacity: .55;
+  }
+  .kicker {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ---------- ПРАВА КОЛОНКА ---------- */
+  .feed { padding: 64px 0 120px; }
+
+  .section { margin: 0 0 24px; }
+  .case + .section { margin-top: 20px; }
+  .section-label {
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-note {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 12px;
+  }
+
+  .case { display: block; text-decoration: none; margin-bottom: 44px; }
+  .shot {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.7);
+    font-size: 14px;
+    transition: transform .35s cubic-bezier(.2,.7,.3,1);
+  }
+  .shot { position: relative; }
+  .tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    z-index: 2;
+    padding: 7px 12px;
+    border-radius: 9px;
+    font-size: 13px;
+    line-height: 1;
+    color: #fff;
+    background: rgba(20,20,22,.42);
+    border: 1px solid rgba(255,255,255,.16);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .tag.dark {
+    color: #17171a;
+    background: rgba(255,255,255,.55);
+    border-color: rgba(0,0,0,.10);
+  }
+  .case:hover .shot { transform: scale(1.008); }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shot .logo {
+    width: 52%; height: auto;
+    object-fit: contain;
+    opacity: .96;
+  }
+  .shot .logo.wide { width: 62%; }
+  .cap {
+    margin-top: 26px;
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+    font-size: 16px;
+  }
+  .cap span { color: var(--muted); }
+  .case:hover .cap b { text-decoration: underline; text-underline-offset: 4px; }
+  .cap b { font-weight: 400; }
+
+  .gold {
+    background:
+      radial-gradient(circle at 50% 46%, rgba(214,170,88,.40), rgba(214,170,88,.10) 40%, transparent 64%),
+      linear-gradient(140deg,#0a0a0b,#17140f);
+  }
+  .shot .logo.aurex {
+    width: 46%;
+    filter: drop-shadow(0 0 26px rgba(222,178,96,.55)) drop-shadow(0 0 60px rgba(214,160,70,.35));
+  }
+  .sky {
+    position: relative;
+    background:
+      radial-gradient(circle at 30% 24%, rgba(160,205,245,.55), rgba(160,205,245,0) 58%),
+      linear-gradient(160deg,#7db4ea 0%,#4b8fd8 52%,#2f6fc0 100%);
+  }
+  .shot .logo.inzhur { width: 44%; }
+  .shot .corner {
+    position: absolute;
+    right: -4%;
+    bottom: -3%;
+    width: 46%;
+    height: auto;
+    object-fit: contain;
+  }
+  .g1 { background: linear-gradient(140deg,#1c1c1f,#3a3a42); }
+  .g2 { background: linear-gradient(140deg,#0f3527,#2b7d55); }
+  .g3 { background: linear-gradient(140deg,#3a2410,#8a5a1e); }
+  .g4 { background: linear-gradient(140deg,#101c3a,#2b4a8f); }
+  .g5 { background: linear-gradient(140deg,#3a1020,#8f2b45); }
+  .g6 { background: linear-gradient(140deg,#241033,#5a2b8f); }
+
+  .outro {
+    border-top: 1px solid var(--line);
+    padding-top: 34px;
+  }
+  .outro p { margin-bottom: 18px; }
+  .links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .links a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+  }
+  .links a:hover { color: var(--text); }
+
+  @media (max-width: 900px) {
+    .wrap { grid-template-columns: 1fr; gap: 36px; padding: 0 20px; }
+    .side { position: static; padding: 40px 0 0; }
+    .feed { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <aside class="side">
+    <div class="pagenav">
+      <a href="index.html" class="active">Роботи</a>
+      <a href="blog.html">Блог</a>
+    </div>
+    <div class="head">
+      <div class="portrait" id="portrait"></div>
+      <button class="toggle" id="themeBtn" title="Тема" aria-label="Тема"><svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
+    </div>
+
+    <div class="name">Іван Мандровний</div>
+
+    <h1>Придумую рекламу українським брендам. Здебільшого без запиту з їхнього боку.</h1>
+
+    <div class="block">
+      <div class="label">Досвід</div>
+      <p>Працюю проєктно: зовнішня реклама, тредс брендів, креативні концепції. Більшість — під NDA, тому нижче переважно те, що ніхто не замовляв.</p>
+    </div>
+
+    <button class="contact-btn" id="contactBtn">Написати <kbd>C</kbd></button>
+    <div class="kicker">Ручка для підписання оферу підготовлена.</div>
+  </aside>
+
+  <main class="feed">
+
+    <div class="section">
+      <div class="section-label">Проєкти</div>
+    </div>
+
+    <a class="case" href="case-winetime.html">
+      <div class="shot g5">
+        <span class="tag">Гастро-ритейл</span><img class="logo" src="img/logo-winetime.webp" alt="WineTime"></div>
+      <div class="cap"><b>WineTime</b><span>підпис буде після інтейку</span></div>
+    </a>
+
+    <a class="case" href="#">
+      <div class="shot sky">
+        <span class="tag dark">Інвестиції в нерухомість</span>
+        <img class="logo inzhur" src="img/logo-inzhur.webp" alt="Inzhur">
+        <img class="corner" src="img/inzhur-building.webp" alt="">
+      </div>
+      <div class="cap"><b>Inzhur</b><span>підпис буде після інтейку</span></div>
+    </a>
+
+    <a class="case" href="#">
+      <div class="shot g2">
+        <span class="tag">Психологічна допомога</span><img class="logo wide" src="img/logo-vartozhyty.webp" alt="Варто Жити"></div>
+      <div class="cap"><b>Варто Жити</b><span>підпис буде після інтейку</span></div>
+    </a>
+
+    <a class="case" href="#">
+      <div class="shot gold">
+        <span class="tag">Web3</span><img class="logo aurex" src="img/logo-aurex.webp" alt="Aurex"></div>
+      <div class="cap"><b>Aurex</b><span>підпис буде після інтейку</span></div>
+    </a>
+
+    <a class="case" href="#">
+      <div class="shot g1">
+        <span class="tag">IT-медіа</span><img class="logo wide" src="img/logo-dou.webp" alt="DOU"></div>
+      <div class="cap"><b>DOU</b><span>підпис буде після інтейку</span></div>
+    </a>
+
+    <div class="section">
+      <div class="section-label">Ідеї</div>
+      <p class="section-note">Бренди, які мене не просили. Поки що.</p>
+    </div>
+
+    <a class="case" href="#">
+      <div class="shot g6">візуал: комʼюніті водіїв</div>
+      <div class="cap"><b>Auto.ria</b><span>як побудувати комʼюніті водіїв навколо бренду</span></div>
+    </a>
+
+    <a class="case" href="#">
+      <div class="shot g3">візуал: креативи Сільпо</div>
+      <div class="cap"><b>Сільпо</b><span>заголовки, яких там ще не було</span></div>
+    </a>
+
+    <a class="case" href="#">
+      <div class="shot g2">візуал: борд Prom</div>
+      <div class="cap"><b>Prom</b><span>реклама не для покупців, а для власників бізнесу</span></div>
+    </a>
+
+    <div class="outro">
+      <p>Якщо десь тут ви впізнали свій бренд — можу зробити те саме, але вже за вашим запитом.</p>
+      <div class="links">
+        <a href="https://t.me/username">Telegram</a>
+        <a href="https://linkedin.com/in/username">LinkedIn</a>
+        <a href="mailto:mandrovnyi@gmail.com">Пошта</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  const root = document.documentElement;
+
+  /* ---- звук перемикача ---- */
+  const SFX_VOLUME = 0.5;
+  const sfx = new Audio('sound/toggle.mp3');
+  sfx.preload = 'auto';
+  function clack() {
+    try {
+      const a = sfx.cloneNode();
+      a.volume = SFX_VOLUME;
+      a.play().catch(() => {});
+    } catch (e) {}
+  }
+
+  const FRAME_COUNT = 38;
+  const DURATION = 900;
+  const box = document.getElementById('portrait');
+  const imgs = [];
+  for (let i = 1; i <= FRAME_COUNT; i++) {
+    const im = new Image();
+    im.src = `frames/hat_${String(i).padStart(3,'0')}.webp`;
+    im.alt = i === 1 ? 'Іван Мандровний' : '';
+    if (i === 1) im.className = 'on';
+    box.appendChild(im);
+    imgs.push(im);
+  }
+  let current = 0, target = 0, raf = null, last = null;
+  const show = idx => { const i = Math.round(idx); imgs.forEach((im,k) => im.classList.toggle('on', k === i)); };
+  function tick(ts) {
+    if (last === null) last = ts;
+    const step = (FRAME_COUNT - 1) * ((ts - last) / DURATION);
+    last = ts;
+    if (current < target) current = Math.min(target, current + step);
+    else if (current > target) current = Math.max(target, current - step);
+    show(current);
+    if (current !== target) raf = requestAnimationFrame(tick);
+    else { raf = null; last = null; }
+  }
+  function setTheme(dark) {
+    root.dataset.theme = dark ? 'dark' : 'light';
+    target = dark ? FRAME_COUNT - 1 : 0;
+    if (!raf) { last = null; raf = requestAnimationFrame(tick); }
+  }
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark';
+    clack();
+    setTheme(dark);
+  });
+
+  const go = () => { window.location.href = 'mailto:mandrovnyi@gmail.com'; };
+  document.getElementById('contactBtn').addEventListener('click', go);
+  document.addEventListener('keydown', e => {
+    if ((e.key === 'c' || e.key === 'с') && !e.metaKey && !e.ctrlKey && !e.altKey) go();
+  });
+</script>
+</body>
+</html>

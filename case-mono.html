@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Реклама mono в метро Києва — Іван Мандровний</title>
+<style>
+  :root {
+    --bg: #1a1a1c; --panel: #232326; --text: #ededee; --muted: #93939a;
+    --line: #313136; --radius: 22px;
+  }
+  html[data-theme="light"] {
+    --bg: #f4f4f2; --panel: #fff; --text: #17171a; --muted: #77777e; --line: #e3e3e0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 720px; margin: 0 auto; padding: 40px 24px 120px; }
+
+  .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 64px; }
+  .back { color: var(--muted); text-decoration: none; font-size: 15px; }
+  .back:hover { color: var(--text); }
+  .toggle {
+    width: 38px; height: 38px; border-radius: 11px;
+    background: var(--panel); border: 1px solid var(--line);
+    color: var(--text); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .brand { color: var(--muted); font-size: 15px; margin-bottom: 8px; }
+  h1 { font-size: 30px; font-weight: 500; line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 40px; }
+
+  h2 {
+    font-size: 15px; font-weight: 400; color: var(--muted);
+    margin: 48px 0 14px;
+  }
+  p { margin-bottom: 18px; }
+  ol { margin: 0 0 18px 0; padding-left: 22px; }
+  ol li { margin-bottom: 14px; }
+
+  .shot {
+    width: 100%; aspect-ratio: 4/3; border-radius: var(--radius);
+    background: linear-gradient(140deg,#123b2e,#1f6d4e);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,.75); font-size: 14px;
+    margin: 12px 0 10px;
+  }
+  .shot.orig { background: linear-gradient(140deg,#2a2a2e,#45454e); }
+  .shotcap { color: var(--muted); font-size: 14px; margin-bottom: 34px; }
+
+  .ps {
+    border-top: 1px solid var(--line);
+    margin-top: 56px; padding-top: 30px;
+    color: var(--muted);
+  }
+  .cta { margin-top: 46px; font-size: 17px; color: var(--text); }
+  .links { display: flex; gap: 18px; margin-top: 16px; flex-wrap: wrap; }
+  .links a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+  .links a:hover { color: var(--text); }
+  .toggle svg { display: block; }
+  html[data-theme="light"] .i-moon { display: none; }
+  html[data-theme="dark"]  .i-sun  { display: none; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <a class="back" href="index.html">← усі роботи</a>
+    <button class="toggle" id="themeBtn" aria-label="Тема"><svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
+  </div>
+
+  <div class="brand">mono · зовнішня реклама</div>
+  <h1>Реклама mono в метро Києва</h1>
+
+  <p>Більшість подумає, що це неправильно — критикувати рекламу великого бренду. Але я зовсім знахабнів і буду не лише критикувати, а й запропоную свої варіанти.</p>
+
+  <h2>Контекст</h2>
+  <p>У мономаркеті знижки 10%, які сам моно і покриває за власний рахунок. На це виділено 200 млн гривень.</p>
+
+  <div class="shot orig">візуал: оригінальний борд mono</div>
+  <div class="shotcap">Те, що висіло в метро.</div>
+
+  <h2>Що не так</h2>
+  <p>Дизайн на креативі звичайний. Отже, ставку зробили на копірайт.</p>
+  <p>Ідея обіграти всім відоме рівняння 1+1=3 і написати правду — прикольна й має місце бути. Але, як часто буває, це ідея заради ідеї.</p>
+  <p>Далі дрібним текстом фраза «10% зверху». Впевнений, що багатьох це зіб'є з пантелику, бо схоже на якусь додаткову оплату.</p>
+
+  <h2>Як покращити</h2>
+  <ol>
+    <li>Якщо хотіли висміяти старі, відомі всім акції — замість «1+1=3» краще взяти «знижки до 90%». Так одним реченням і увагу привернемо, і пропозицію озвучимо.</li>
+    <li>Якщо хотіли креатив з рівнянням — беремо 150+150=270 і навмисно робимо помилку з похибкою в 10%.</li>
+    <li>Якщо хотіли зіграти словами — пишемо в меседжі, що пропозиція тільки для користувачів метро. А в таксі люди платять більше.</li>
+  </ol>
+
+  <div class="shot">візуал: мій варіант борда</div>
+  <div class="shotcap">Мій варіант.</div>
+
+  <p>Той таке. Пост писав з любов'ю до бренду.</p>
+
+  <div class="ps">P.S. не звільняйте копірайтера 🙏</div>
+
+  <div class="cta">
+    <p>Якщо у вас теж дизайн звичайний, а ставка на копірайт — я вже знаю, з чого почати.</p>
+    <div class="links">
+      <a href="https://t.me/username">Telegram</a>
+      <a href="https://linkedin.com/in/username">LinkedIn</a>
+      <a href="mailto:mandrovnyi@gmail.com">Пошта</a>
+    </div>
+  </div>
+
+</div>
+<script>
+  const root = document.documentElement;
+  document.getElementById('themeBtn').onclick = () =>
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+</script>
+</body>
+</html>

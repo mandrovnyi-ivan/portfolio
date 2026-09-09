@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 пробивних текстових прийомів — Іван Мандровний</title>
+<meta name="description" content="Список обіцяно в заголовку. Що з ним сталось далі — читайте.">
+<style>
+  :root {
+    --bg: #1a1a1c;
+    --panel: #232326;
+    --text: #ededee;
+    --muted: #93939a;
+    --line: #313136;
+    --radius: 20px;
+  }
+  html[data-theme="light"] {
+    --bg: #f4f4f2;
+    --panel: #ffffff;
+    --text: #17171a;
+    --muted: #77777e;
+    --line: #e3e3e0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.375;
+    -webkit-font-smoothing: antialiased;
+    transition: background .25s ease, color .25s ease;
+  }
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1054px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 330px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* ---------- ЛІВА КОЛОНКА ---------- */
+  .side {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 64px 0 56px;
+  }
+  .pagenav {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 22px;
+    font-size: 14px;
+  }
+  .pagenav a { color: var(--muted); text-decoration: none; }
+  .pagenav a.active { color: var(--text); }
+  .pagenav a:hover { color: var(--text); }
+
+  .head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 34px;
+  }
+  .portrait {
+    position: relative;
+    width: 236px; height: 236px;
+    margin: -26px 0 0 -18px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, rgba(0,0,0,.62) 58%, rgba(0,0,0,.22) 73%, transparent 86%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 38%, rgba(0,0,0,.62) 58%, rgba(0,0,0,.22) 73%, transparent 86%);
+  }
+  .portrait img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+    opacity: 0; pointer-events: none;
+  }
+  .portrait img.on { opacity: 1; }
+
+  .toggle {
+    flex: none;
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .toggle svg { display: block; }
+  html[data-theme="light"] .i-moon { display: none; }
+  html[data-theme="dark"]  .i-sun  { display: none; }
+
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+  .back:hover { color: var(--text); }
+
+  .brand { font-size: 16px; margin-bottom: 6px; }
+  .brand-sub { color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+
+  .label {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .block { margin-bottom: 40px; }
+
+  .contact-btn {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 16px;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  .contact-btn:hover { opacity: .85; }
+  .contact-btn kbd {
+    position: absolute; right: 12px;
+    font-family: inherit; font-size: 12px;
+    border: 1px solid rgba(128,128,128,.4);
+    border-radius: 5px;
+    padding: 2px 7px;
+    opacity: .55;
+  }
+  .kicker { margin-top: 14px; color: var(--muted); font-size: 14px; }
+
+  /* ---------- ПРАВА КОЛОНКА ---------- */
+  .feed { padding: 64px 0 140px; max-width: 620px; }
+
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    padding: 4px 9px;
+    border-radius: 7px;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    margin-bottom: 20px;
+  }
+
+  .feed h1 {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .tease {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0 70px;
+  }
+  .tease span {
+    font-size: 22px;
+    line-height: 1;
+    color: var(--muted);
+    margin-bottom: 26px;
+  }
+
+  .punch p {
+    font-size: 19px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .punch p.quiet {
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 12px;
+    border-top: 1px solid var(--line);
+    padding-top: 26px;
+  }
+
+  .more { margin-top: 44px; }
+  .more p { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+  .more .links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .more .links a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+  }
+  .more .links a:hover { color: var(--text); }
+  .more .links a.tg { color: var(--text); border-color: var(--text); }
+
+  @media (max-width: 900px) {
+    .wrap { grid-template-columns: 1fr; gap: 36px; padding: 0 20px; }
+    .side { position: static; padding: 40px 0 0; }
+    .feed { padding-top: 0; max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <aside class="side">
+    <div class="pagenav">
+      <a href="index.html">Роботи</a>
+      <a href="blog.html" class="active">Блог</a>
+    </div>
+    <div class="head">
+      <div class="portrait" id="portrait"></div>
+      <button class="toggle" id="themeBtn" title="Тема" aria-label="Тема"><svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
+    </div>
+
+    <a class="back" href="blog.html">← до блогу</a>
+
+    <div class="brand">10 прийомів, які продають</div>
+    <div class="brand-sub">Блог · 22 серпня 2026</div>
+
+    <div class="block">
+      <div class="label">Стаття</div>
+      <p>Безкоштовна. Без списку з десяти пунктів — зате чесно.</p>
+    </div>
+
+    <button class="contact-btn" id="contactBtn">Написати <kbd>C</kbd></button>
+    <div class="kicker">Ручка для підписання оферу підготовлена.</div>
+  </aside>
+
+  <main class="feed">
+    <span class="badge">Безкоштовно</span>
+    <h1>10 пробивних текстових прийомів, після яких читач стає покупцем</h1>
+    <div class="meta">22 серпня 2026 · 12 секунд читання</div>
+
+    <div class="tease">
+      <span>↓</span><span>↓</span><span>↓</span><span>↓</span><span>↓</span>
+      <span>↓</span><span>↓</span><span>↓</span><span>↓</span><span>↓</span>
+      <span>↓</span><span>↓</span><span>↓</span><span>↓</span><span>↓</span>
+      <span>↓</span><span>↓</span><span>↓</span><span>↓</span><span>↓</span>
+      <span>↓</span><span>↓</span>
+    </div>
+
+    <div class="punch">
+      <p>Ніяких формул, бляха, немає.</p>
+      <p>Є голова, розуміння аудиторії й уміння нормально писати. Цього достатньо. Не треба перетворювати кожен текст на сеанс гіпнозу з дивана.</p>
+      <p class="quiet">Якщо чесно чекали список — вибачте. Якщо долистали суто з цікавості — вітаю, прийом спрацював і на вас 😅</p>
+    </div>
+
+    <div class="more">
+      <p>Якщо не набридло — я частіше пишу в телеграм-каналі, без заголовків-приманок. І в блозі є ще тексти — про рекламу, копірайт і те, що з цим усім не так.</p>
+      <div class="links">
+        <a class="tg" href="https://t.me/username">Телеграм-канал</a>
+        <a href="blog.html">Ще статті в блозі</a>
+        <a href="index.html">Портфоліо</a>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  const root = document.documentElement;
+
+  const SFX_VOLUME = 0.5;
+  const sfx = new Audio('sound/toggle.mp3');
+  sfx.preload = 'auto';
+  function clack() {
+    try {
+      const a = sfx.cloneNode();
+      a.volume = SFX_VOLUME;
+      a.play().catch(() => {});
+    } catch (e) {}
+  }
+
+  const FRAME_COUNT = 38;
+  const DURATION = 900;
+  const box = document.getElementById('portrait');
+  const imgs = [];
+  for (let i = 1; i <= FRAME_COUNT; i++) {
+    const im = new Image();
+    im.src = `frames/hat_${String(i).padStart(3,'0')}.webp`;
+    im.alt = i === 1 ? 'Іван Мандровний' : '';
+    if (i === 1) im.className = 'on';
+    box.appendChild(im);
+    imgs.push(im);
+  }
+  let current = 0, target = 0, raf = null, last = null;
+  const show = idx => { const i = Math.round(idx); imgs.forEach((im,k) => im.classList.toggle('on', k === i)); };
+  function tick(ts) {
+    if (last === null) last = ts;
+    const step = (FRAME_COUNT - 1) * ((ts - last) / DURATION);
+    last = ts;
+    if (current < target) current = Math.min(target, current + step);
+    else if (current > target) current = Math.max(target, current - step);
+    show(current);
+    if (current !== target) raf = requestAnimationFrame(tick);
+    else { raf = null; last = null; }
+  }
+  function setTheme(dark) {
+    root.dataset.theme = dark ? 'dark' : 'light';
+    target = dark ? FRAME_COUNT - 1 : 0;
+    if (!raf) { last = null; raf = requestAnimationFrame(tick); }
+  }
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark';
+    clack();
+    setTheme(dark);
+  });
+
+  const go = () => { window.location.href = 'mailto:mandrovnyi@gmail.com'; };
+  document.getElementById('contactBtn').addEventListener('click', go);
+  document.addEventListener('keydown', e => {
+    if ((e.key === 'c' || e.key === 'с') && !e.metaKey && !e.ctrlKey && !e.altKey) go();
+  });
+</script>
+</body>
+</html>
