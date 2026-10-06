@@ -4,19 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Реклама mono в метро Києва — Іван Мандровний</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #1a1a1c; --panel: #232326; --text: #ededee; --muted: #93939a;
-    --line: #313136; --radius: 22px;
+    --line: #313136; --sunk: #1f1f22; --radius: 22px;
   }
   html[data-theme="light"] {
-    --bg: #f4f4f2; --panel: #fff; --text: #17171a; --muted: #77777e; --line: #e3e3e0;
+    --bg: #f4f4f2; --panel: #fff; --text: #17171a; --muted: #77777e; --line: #e3e3e0; --sunk: #ebebe7;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: var(--bg); color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
     font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
   .page { max-width: 720px; margin: 0 auto; padding: 40px 24px 120px; }
 
@@ -49,6 +60,23 @@
     margin: 12px 0 10px;
   }
   .shot.orig { background: linear-gradient(140deg,#2a2a2e,#45454e); }
+
+  /* було / мій варіант */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0 34px;
+  }
+  .compare figure { min-width: 0; }
+  .compare figcaption { display: block; margin-bottom: 10px; }
+  .compare .shot { margin: 0; border-radius: 16px; overflow: hidden; }
+  .compare .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .compare .before .shot { background: var(--panel); border: 1px solid var(--line); color: var(--muted); }
+  .compare .before .shot img { object-fit: contain; }
+  @media (max-width: 560px) {
+    .compare { grid-template-columns: 1fr; }
+  }
   .shotcap { color: var(--muted); font-size: 14px; margin-bottom: 34px; }
 
   .ps {
@@ -69,7 +97,7 @@
 <div class="page">
 
   <div class="top">
-    <a class="back" href="index.html">← усі роботи</a>
+    <a class="back" href="/">← портфоліо</a>
     <button class="toggle" id="themeBtn" aria-label="Тема"><svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
   </div>
 
@@ -80,9 +108,6 @@
 
   <h2>Контекст</h2>
   <p>У мономаркеті знижки 10%, які сам моно і покриває за власний рахунок. На це виділено 200 млн гривень.</p>
-
-  <div class="shot orig">візуал: оригінальний борд mono</div>
-  <div class="shotcap">Те, що висіло в метро.</div>
 
   <h2>Що не так</h2>
   <p>Дизайн на креативі звичайний. Отже, ставку зробили на копірайт.</p>
@@ -96,8 +121,16 @@
     <li>Якщо хотіли зіграти словами — пишемо в меседжі, що пропозиція тільки для користувачів метро. А в таксі люди платять більше.</li>
   </ol>
 
-  <div class="shot">візуал: мій варіант борда</div>
-  <div class="shotcap">Мій варіант.</div>
+  <div class="compare">
+    <figure class="before">
+      <figcaption class="mono">Було</figcaption>
+      <div class="shot">візуал: оригінальний борд mono</div>
+    </figure>
+    <figure class="after">
+      <figcaption class="mono">Мій варіант</figcaption>
+      <div class="shot">візуал: мій варіант борда</div>
+    </figure>
+  </div>
 
   <p>Той таке. Пост писав з любов'ю до бренду.</p>
 

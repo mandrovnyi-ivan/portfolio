@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>#ВАРТОЖИТИ — Іван Мандровний</title>
+<meta name="description" content="Як шукали меседж і образ для кампанії лінії психологічної підтримки 5522">
+<meta property="og:title" content="#ВАРТОЖИТИ — Іван Мандровний">
+<meta property="og:description" content="Як шукали меседж і образ для кампанії лінії психологічної підтримки 5522">
+<meta property="og:image" content="https://mandrovnyi.cc/img/vartozhyty/final-1-orientyry.webp">
+<script>
+  try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/folders.css">
+<script src="/posts.js"></script>
+<link rel="expect" href="#rendered" blocking="render">
+<style>
+  /* Кейс відкритий третьою вкладкою-«файлом» поверх папки «Портфоліо». Базові стилі — folders.css */
+  .cv img { display: block; max-width: 100%; height: auto; }
+  .cv .stack::after { display: none; }
+  .cv .sheet.front { padding: 28px 40px 56px; view-transition-name: folder-case; }
+  ::view-transition-new(folder-case) { animation: case-in .45s cubic-bezier(.3,.9,.3,1) both; }
+  ::view-transition-old(folder-case) { animation-duration: .3s; }
+  @keyframes case-in { from { transform: translate(10px, 10px); opacity: 0; } }
+
+  .cv .tab-case { gap: 12px; }
+  .cv .tab .x { color: var(--muted); font-size: 15px; text-decoration: none; line-height: 1; margin-right: -6px; }
+  .cv .tab .x:hover { color: var(--text); }
+
+  .shead { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 40px; }
+  .shead .back { color: var(--muted); text-decoration: none; font-size: 14px; }
+  .shead .back:hover { color: var(--text); }
+
+  /* шапка кейсу й паспорт */
+  .chead { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .cv h1.ctitle { font-size: 20px; font-weight: 500; line-height: 1.375; margin: 10px 0 4px; }
+  .muted { color: var(--muted); }
+  .pass { display: grid; grid-template-columns: auto minmax(0, 340px); gap: 14px 40px; margin: 0; }
+  .pass div { display: flex; flex-direction: column; gap: 6px; }
+  .pass dt { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .pass dd { margin: 0; font-size: 15px; line-height: 1.45; }
+
+  /* фінальні макети стрічкою */
+  .finals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 28px 0 8px; }
+  .finals img, .fig img, .msg img { border-radius: 12px; border: 1px solid var(--line); background: #fff; width: 100%; }
+  .cv .cap { display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: inherit; }
+
+  /* нитка через увесь кейс */
+  .threaded { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 28px; margin-top: 36px; }
+  .thread { position: relative; }
+  .thread svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .thread path { fill: none; stroke: var(--text); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .tsec { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 32px; padding-block: 30px; border-top: 1px solid var(--line); }
+  .tsec:first-child { border-top: 0; padding-top: 0; }
+  .tsec .k { font-size: 14px; color: var(--muted); display: flex; gap: 10px; align-items: baseline; }
+  .tsec .v { min-width: 0; }
+  .txt { max-width: 620px; line-height: 1.6; }
+  .txt p + p, .txt p + ul, .txt ul + p, .txt p + ol, .txt ol + p { margin-top: 14px; }
+  .txt ul, .txt ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .txt b { font-weight: 600; }
+  .src { display: inline-block; margin-top: 16px; font-size: 14px; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .src:hover { color: var(--text); }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 12px 0 0; max-width: 620px; }
+  .stats div { padding: 14px 16px 14px 0; display: flex; flex-direction: column; gap: 4px; }
+  .stats b { font-size: 20px; font-weight: 600; }
+  .stats span { font-size: 14px; color: var(--muted); }
+  .fig { margin: 24px 0 0; }
+
+  /* було / стало — текстом */
+  .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; max-width: 720px; }
+  .ba > div { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 12px; }
+  .ba .was { background: var(--sunk); }
+  .ba .was p { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+  .ba p { font-weight: 600; line-height: 1.35; }
+
+  /* фінальні меседжі */
+  .msgs { display: flex; flex-direction: column; gap: 14px; margin-top: 26px; }
+  .msg { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 18px; align-items: center; }
+  .msg b { font-weight: 600; display: block; }
+  .msg span { color: var(--muted); font-size: 14px; display: block; margin-top: 4px; }
+
+  /* «Про це писали» — як у Дизайн-коді: список на підкладці --sunk */
+  .press { display: flex; flex-direction: column; background: var(--sunk); border-radius: 16px; padding: 8px 24px; }
+  .press a { display: grid; grid-template-columns: 100px minmax(0, 1fr) auto; gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--line); text-decoration: none; align-items: baseline; }
+  .press a:last-child { border-bottom: 0; }
+  .press a:hover .pht { text-decoration: underline; text-underline-offset: 3px; }
+
+  .knot { display: flex; align-items: baseline; gap: 16px; padding-top: 44px; }
+  .knot .num { font-size: 20px; font-weight: 600; letter-spacing: .02em; opacity: .2; transition: opacity .6s; }
+  .knot.done .num { opacity: 1; }
+
+
+  /* лайтбокс: клік по картинці — на весь екран */
+  .cv .sheet img { cursor: zoom-in; }
+  .lightbox { border: 0; padding: 0; background: none; max-width: none; max-height: none; width: 100vw; height: 100vh; display: none; place-items: center; }
+  .lightbox[open] { display: grid; }
+  .lightbox::backdrop { background: rgba(10,10,12,.9); }
+  .lightbox img { max-width: 92vw; max-height: 92vh; width: auto; height: auto; border-radius: 8px; cursor: default; }
+
+  @media (max-width: 960px) {
+    .chead { grid-template-columns: minmax(0, 1fr); }
+    .pass { grid-template-columns: auto minmax(0, 1fr); justify-content: start; }
+    .tsec { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  }
+  @media (max-width: 620px) {
+    .cv .desk { padding: 20px 16px 64px; }
+    .cv .sheet.front { padding: 20px 18px 40px; }
+    .cv .tab { padding: 11px 14px; font-size: 15px; }
+    .cv .tab[aria-selected="false"] { padding-bottom: 17px; }
+    .cv .tab[aria-selected="true"] { padding-bottom: 12px; }
+    .cv .tab .mono { display: none; }
+    .pass { grid-template-columns: minmax(0, 1fr); }
+    .finals { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .threaded { grid-template-columns: 26px minmax(0, 1fr); gap: 14px; }
+    .ba { grid-template-columns: minmax(0, 1fr); }
+    .stats { grid-template-columns: minmax(0, 1fr); }
+    .msg { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; }
+    .press { padding: 4px 16px; }
+    .press a { grid-template-columns: minmax(0, 1fr) auto; }
+    .press a .pm { grid-column: 1 / -1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-new(folder-case) { animation: none; }
+  }
+</style>
+</head>
+<body class="cv">
+
+<div class="desk">
+
+  <nav class="tabs" role="tablist" aria-label="Розділи сайту">
+    <a class="tab" role="tab" href="/" aria-selected="false" tabindex="-1">Портфоліо <span class="mono">8</span></a>
+    <span class="tab tab-case" role="tab" aria-selected="true">#ВАРТОЖИТИ <a class="x" href="/" aria-label="Закрити кейс">×</a></span>
+    <a class="tab" role="tab" href="/blog" aria-selected="false" tabindex="-1">Блог <span class="mono" id="blogCount">1</span></a>
+  </nav>
+  <script>document.getElementById('blogCount').textContent = window.visiblePosts().length;</script>
+
+  <div class="stack">
+    <article class="sheet front" role="tabpanel" aria-label="Кейс #ВАРТОЖИТИ">
+      <div class="shead">
+        <a class="back" href="/">← Портфоліо</a>
+        <button class="toggle" type="button" title="Тема" aria-label="Тема"><svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
+      </div>
+
+      <header class="chead">
+        <div><span class="mono">Кейс 03</span><h1 class="ctitle">#ВАРТОЖИТИ</h1><span class="muted">Психологічна допомога</span></div>
+        <dl class="pass">
+          <div><dt>Коли</dt><dd>Весна 2026</dd></div>
+          <div><dt>Роль</dt><dd>Creative (Copy &amp; Art)</dd></div>
+        </dl>
+      </header>
+
+      <div class="finals">
+        <img src="/img/vartozhyty/final-1-orientyry.webp" width="1080" height="1080" alt="Заплутатись можна шукаючи свої орієнтири. 5522">
+        <img src="/img/vartozhyty/final-2-tysha.webp" width="1080" height="1080" alt="Заплутатись можна у тиші, яка теж лякає. 5522">
+        <img src="/img/vartozhyty/final-3-stiny.webp" width="1080" height="1080" alt="Заплутатись можна у самоті власних стін. 5522">
+        <img src="/img/vartozhyty/final-4-tryvoha.webp" width="1080" height="1080" alt="Заплутатись можна у хвилинах тривоги. 5522">
+      </div>
+
+      <div class="threaded">
+        <div class="thread" id="thread" aria-hidden="true"><svg><path id="th-path"/></svg></div>
+        <div>
+          <section class="tsec"><div class="k">Задача</div><div class="v">
+            <div class="txt">
+              <p>Майже половина українців за рік відчувала, що їй потрібна психологічна підтримка. Звернулися до фахівця — 13%. Кожен другий просто не знає куди.</p>
+              <p>А безкоштовна лінія 5522 вже працює. Тобто проблема не в доступі до допомоги, а в тому, що людина не зважується набрати номер. Реклама тут має не інформувати, а підштовхнути до дзвінка. Ціль одна — щоб на 5522 дзвонили частіше.</p>
+            </div>
+            <div class="stats"><div><b>49%</b><span>потребували підтримки</span></div><div><b>13%</b><span>звернулися до фахівця</span></div><div><b>51%</b><span>не знають, куди звертатися</span></div></div>
+            <a class="src" href="https://theinweb.media/doslidzhennya-vartozhyty-kantar-ukrayina/" target="_blank" rel="noopener">Дослідження #ВАРТОЖИТИ × Kantar Україна, лютий 2026 ↗</a>
+          </div></section>
+
+          <section class="tsec"><div class="k"><span class="mono">01</span>Шукаю меседж</div><div class="v">
+            <div class="txt">
+              <p>Перш ніж писати, поставив собі три умови. Кожен меседж має:</p>
+              <ul>
+                <li><b>влучити в біль текстом</b> — назвати стан, який людина знає по собі, але вголос не проговорює;</li>
+                <li><b>влучити в біль картинкою</b> — побутовий тригер: річ, яку кожен бачив сто разів і впізнає за пів секунди, ще до того як прочитає текст;</li>
+                <li><b>мати другий сенс</b> — текст звучить буденно, а справжнє значення зашите в картинку. Подвійне кодування: людина спершу впізнає ситуацію, а потім розуміє, що мова про неї.</li>
+              </ul>
+              <p>Під ці умови зібрав три меседж-території. Залишився перший. У ньому головне — дієслово <b>«заплутатись»</b>. Воно однаково чесно описує і навушники в кишені, і думки о третій ночі. Далі вся кампанія будувалась навколо одного слова.</p>
+            </div>
+            <figure class="fig"><img src="/img/vartozhyty/draft-messages.webp" width="1548" height="782" alt="Три меседж-території: заплутатись у дрібницях, вибити з рівноваги, досить однієї проблеми" loading="lazy"><figcaption class="cap"><span class="mono">Три меседж-території · чернетки</span></figcaption></figure>
+          </div></section>
+
+          <section class="tsec"><div class="k"><span class="mono">02</span>Шукаю образ</div><div class="v">
+            <div class="txt">
+              <p>Меседж є — тепер що на картинці: предмети, люди чи абстракція?</p>
+              <p>Одна з ідей — <b>телефон, сплетений із заплутаної нитки</b>. Силует складається з того, у чому заплутується конкретна аудиторія: для військового — рація з дротів, для підлітка — слухавка з навушників, для жінки — слухавка з клубка пряжі. Текст каже «дзвони 5522», а картинка сама має форму телефона — б'ємо двічі в одну точку.</p>
+              <p>Вийшов мінімалістичний, майже концептуальний плакат. Але в лоб: картинка повторює те, що вже сказав текст, і людині нічого не лишається розгадати.</p>
+            </div>
+            <figure class="fig"><img src="/img/vartozhyty/draft-a-phones.webp" width="1124" height="546" alt="Чернетки: силуети телефонів із заплутаних дротів, навушників і пряжі" loading="lazy"><figcaption class="cap"><span class="mono">Одна з ідей · чернетки</span></figcaption></figure>
+          </div></section>
+
+          <section class="tsec"><div class="k"><span class="mono">03</span>Перевірка на людях</div><div class="v">
+            <div class="txt">
+              <p>Меседжі пройшли фокус-групу на 1000 людей, і один з них вона переписала.</p>
+              <p>Спочатку був заголовок «Заплутатись можна у пошуку дороги додому» — для тих, хто повертається з фронту. Але аналогія не спрацювала: дорогу додому всі й так знають, тому фраза читалась буквально. А військові не впізнавали в ній себе — найгірший результат для меседжу, написаного саме для них.</p>
+              <p>Тому «дорогу додому» замінили на <b>«свої орієнтири»</b>. Сенс той самий — людина повертається і не розуміє, як жити далі, — але тепер без пояснень. Орієнтири губиш не на мапі, а в собі.</p>
+            </div>
+            <div class="ba">
+              <div class="was"><span class="mono">До фокус-групи</span><p>Заплутатись можна у пошуку дороги додому</p></div>
+              <div><span class="mono">Після</span><p>Заплутатись можна шукаючи свої орієнтири</p></div>
+            </div>
+          </div></section>
+
+          <section class="tsec"><div class="k"><span class="mono">04</span>Фінал</div><div class="v">
+            <div class="txt">
+              <p>Від ідеї з телефоном у фіналі лишилось головне: ілюстрація замість фото й заплутана нитка як знак. А сам телефон поступився речам, у яких людина впізнає власну ситуацію, — кожен макет говорить до своєї аудиторії.</p>
+              <p>Формула одна на всю серію: <b>знайома річ + чорний клубок поверх неї</b>. Предмети — з побуту, який зараз є в кожного. Клубок завжди однаковий і завжди чорний, тож серію впізнаєш навіть без логотипа. Мальований від руки стиль — свідомо: так виглядає не корпоративна реклама, а нотатка, яку людина могла б намалювати сама.</p>
+              <p>Кожен заголовок починається однаково — «Заплутатись можна…». Повтор працює як рефрен: другий макет у стрічці вже читається з пів слова. А закриває все те саме дієслово: «Коли заплутано — дзвони». Проблема і рішення в одному слові.</p>
+            </div>
+            <div class="msgs">
+              <div class="msg"><img src="/img/vartozhyty/final-1-orientyry.webp" width="1080" height="1080" alt="" loading="lazy"><div><b>Заплутатись можна шукаючи свої орієнтири</b><span>Мапа в телефоні. Орієнтири на мапі й у житті — для тих, хто повертається з фронту.</span></div></div>
+              <div class="msg"><img src="/img/vartozhyty/final-2-tysha.webp" width="1080" height="1080" alt="" loading="lazy"><div><b>Заплутатись можна у тиші, яка теж лякає</b><span>Голосове повідомлення. Тиша, коли чекаєш на звістку від близьких.</span></div></div>
+              <div class="msg"><img src="/img/vartozhyty/final-3-stiny.webp" width="1080" height="1080" alt="" loading="lazy"><div><b>Заплутатись можна у самоті власних стін</b><span>План квартири. Коли вдома немає куди піти від себе.</span></div></div>
+              <div class="msg"><img src="/img/vartozhyty/final-4-tryvoha.webp" width="1080" height="1080" alt="" loading="lazy"><div><b>Заплутатись можна у хвилинах тривоги</b><span>Пісочний годинник. Тривога — і стан, і повітряна тривога.</span></div></div>
+            </div>
+          </div></section>
+
+          <section class="tsec"><div class="k">Про це писали</div><div class="v">
+            <div class="press">
+              <a href="https://mmr.ua/news/trends/yak-vporatysya-zi-stresom-ta-emocziyamy-kol-czentr-vartozhyty-zapustyv-kampaniyu-psyhologichnoyi-pidtrymky/" target="_blank" rel="noopener"><span class="mono pm">MMR</span><span class="pht">Як впоратися зі стресом та емоціями: кол-центр #ВАРТОЖИТИ запустив кампанію психологічної підтримки</span><span class="mono">12.03 ↗</span></a>
+              <a href="https://theinweb.media/kolczentr-vartozhyty-emocziynyy-stan-ukrayincziv/" target="_blank" rel="noopener"><span class="mono pm">The InWeb</span><span class="pht">Колцентр #ВАРТОЖИТИ запустив інформаційну кампанію про емоційний стан українців</span><span class="mono">12.03 ↗</span></a>
+              <a href="https://news.online.ua/mi-konsultujemo-bezkostovno-kol-centr-vartoziti-zapustiv-kampaniiu-dlia-pidtrimki-ukrayinciv-902378/" target="_blank" rel="noopener"><span class="mono pm">online.ua</span><span class="pht">«Ми консультуємо безкоштовно». Кол-центр #ВАРТОЖИТИ запустив кампанію для підтримки українців</span><span class="mono">18.03 ↗</span></a>
+              <a href="https://nashkiev.ua/news/koltsentr-vartozhiti-zapuskae-kampaniyu-psihologichnoi-pidtrimki-yak-otrimati-dopomogu" target="_blank" rel="noopener"><span class="mono pm">Наш Київ</span><span class="pht">Колцентр #ВАРТОЖИТИ запускає кампанію психологічної підтримки: як отримати допомогу</span><span class="mono">18.03 ↗</span></a>
+              <a href="https://chas.news/news/koltsentr-vartozhiti-zapuskae-kampaniyu-psihologichnoi-pidtrimki-yak-otrimati-dopomogu" target="_blank" rel="noopener"><span class="mono pm">chas.news</span><span class="pht">Емоційно реагувати під час війни — нормально: #ВАРТОЖИТИ нагадує про безкоштовну лінію 5522</span><span class="mono">18.03 ↗</span></a>
+            </div>
+          </div></section>
+
+          <div class="knot" id="knot"><span class="num">5522</span><span class="muted" style="font-size:14px">Коли заплутано — дзвони</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Портфоліо — задня папка, вміст на / -->
+    <div class="sheet back" data-folder="portfolio" aria-hidden="true"></div>
+  </div>
+</div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Перегляд зображення"><img alt=""></dialog>
+
+<span id="rendered" hidden></span>
+<script src="/folders.js"></script>
+<script>
+(function () {
+  /* Нитка: заплутана на початку, кожен відрізок випрямляється, коли проходить вище ~¾ екрана; наприкінці гачок до 5522 */
+  var thread = document.getElementById('thread'), svg = thread.querySelector('svg'), pth = document.getElementById('th-path'), knot = document.getElementById('knot');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Нитка — подовжена циклоїда: поки D > R, лінія робить петлі (клубок); коли D → 0, вона стає прямою.
+     D залежить від того, наскільки ця ділянка нитки вже прокручена вгору. Кінець — гачок до 5522. */
+  var W = 90, Hh = 1000, R = 8;
+  function layout() { var r = thread.getBoundingClientRect(); W = r.width; Hh = r.height; svg.setAttribute('viewBox', '0 0 ' + W.toFixed(1) + ' ' + Hh.toFixed(1)); }
+  /* Фініш: за останні ~1,2 екрана прокрутки до 5522 межа випрямлення плавно з'їжджає з 40% екрана
+     за його нижній край — решта петель випрямляється по черзі згори вниз, без стрибка.
+     Якщо сторінка не докручується до 5522, фініш завершується на самому низу прокрутки. */
+  function finish() {
+    if (reduce) return 1;
+    var toKnot = knot.getBoundingClientRect().bottom - innerHeight * 0.95;
+    var toBottom = document.documentElement.scrollHeight - innerHeight - scrollY;
+    var left = Math.max(0, Math.min(toKnot, toBottom));
+    var e = Math.min(1, Math.max(0, 1 - left / (innerHeight * 1.2)));
+    return e * e * (3 - 2 * e);
+  }
+  function untangle() {
+    var r = thread.getBoundingClientRect(), span = innerHeight * 0.35, e = finish();
+    var mid = innerHeight * (0.4 + 0.9 * e);
+    var end = e >= 1;
+    var cx0 = W * 0.5, tail = Math.min(70, Hh * 0.1), body = Hh - tail, d = '', th = 0;
+    for (; ; th += 0.22) {
+      var yb = R * th; if (yb > body) break;
+      var t = end ? 1 : Math.min(1, Math.max(0, (mid - (r.top + yb)) / span));
+      t = t * t * (3 - 2 * t);
+      var k = 1 - t;
+      var D = 24 * (0.65 + 0.35 * Math.sin(th * 0.31) * Math.sin(th * 0.13 + 1)) * k;
+      var cx = cx0 + Math.sin(th * 0.09) * W * 0.18 * k;
+      var x = cx + D * Math.cos(th) * 1.25, y = yb - D * Math.sin(th);
+      d += (d ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }
+    d += ' Q' + cx0.toFixed(1) + ' ' + Hh.toFixed(1) + ' ' + (W + 6).toFixed(1) + ' ' + (Hh - 2).toFixed(1);
+    pth.setAttribute('d', d);
+    knot.classList.toggle('done', end || knot.getBoundingClientRect().top < innerHeight * 0.85);
+  }
+  var ticking = false;
+  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; untangle(); }); }
+  function relayout() { layout(); untangle(); }
+  addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', relayout); addEventListener('load', relayout);
+  document.querySelectorAll('.threaded img').forEach(function (im) { if (!im.complete) im.addEventListener('load', relayout); });
+  relayout();
+
+  /* Лайтбокс: клік по картинці кейсу — на весь екран; Esc або клік поза картинкою закривають */
+  var box = document.getElementById('lightbox'), big = box.querySelector('img');
+  document.querySelectorAll('.sheet img').forEach(function (im) {
+    im.addEventListener('click', function () {
+      big.src = im.currentSrc || im.src;
+      big.alt = im.alt;
+      box.showModal();
+    });
+  });
+  box.addEventListener('click', function (e) { if (e.target !== big) box.close(); });
+  box.addEventListener('close', function () { big.removeAttribute('src'); });
+})();
+</script>
+</body>
+</html>

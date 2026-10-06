@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Чернетка — Іван Мандровний</title>
+<script>
+  try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/folders.css">
+<style>
+  /* сторінка-заготовка чернетки: номер, тип, заголовок і один рядок */
+  .draft-page { max-width: 720px; margin: 0 auto; padding: 40px 24px 120px; }
+  .back { color: var(--muted); text-decoration: none; font-size: 14px; }
+  .back:hover { color: var(--text); }
+  .draft-page .post-meta { margin: 64px 0 14px; }
+  .draft-page h1 { font-size: 30px; font-weight: 500; line-height: 1.28; letter-spacing: -0.01em; margin-bottom: 24px; }
+  .draft-page p { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="draft-page">
+  <a class="back" href="/blog">← блог</a>
+  <div class="post-meta"><span class="mono" id="no"></span><span class="mono" id="type"></span><span class="draft-mark">чернетка</span></div>
+  <h1 id="title"></h1>
+  <p>Текст у роботі.</p>
+</div>
+<script src="/posts.js"></script>
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var n = Number(q.get('n'));
+    var p = window.POSTS.filter(function (x) { return x.n === n; })[0];
+    /* поза режимом перегляду чернеток не існує */
+    if (!p || !window.PREVIEW) { location.replace('/blog'); return; }
+    if (!p.draft) { location.replace(p.url); return; }
+    if (q.has('preview')) document.querySelector('.back').href = '/blog?preview';
+    document.title = p.title + ' — чернетка';
+    document.getElementById('no').textContent = window.postNo(p.n);
+    document.getElementById('type').textContent = window.POST_TYPES[p.type][0];
+    document.getElementById('title').textContent = p.title;
+  })();
+</script>
+</body>
+</html>

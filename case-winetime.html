@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WineTime — Іван Мандровний</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #1a1a1c;
@@ -11,6 +14,7 @@
     --text: #ededee;
     --muted: #93939a;
     --line: #313136;
+    --sunk: #1f1f22;
     --radius: 20px;
   }
   html[data-theme="light"] {
@@ -19,6 +23,7 @@
     --text: #17171a;
     --muted: #77777e;
     --line: #e3e3e0;
+    --sunk: #ebebe7;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -31,6 +36,14 @@
     transition: background .25s ease, color .25s ease;
   }
   a { color: inherit; }
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
 
   .wrap {
     max-width: 1054px;
@@ -96,7 +109,20 @@
   .back:hover { color: var(--text); }
 
   .brand { font-size: 16px; margin-bottom: 6px; }
-  .brand-sub { color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+  .brand-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+
+  /* паспорт кейсу — тільки факти */
+  .passport { width: 100%; margin-bottom: 40px; }
+  .passport div {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .passport div:first-child { border-top: 1px solid var(--line); }
+  .passport dd { font-size: 16px; }
 
   .label {
     color: var(--muted);
@@ -129,7 +155,6 @@
     padding: 2px 7px;
     opacity: .55;
   }
-  .kicker { margin-top: 14px; color: var(--muted); font-size: 14px; }
 
   /* ---------- ПРАВА КОЛОНКА ---------- */
   .feed { padding: 64px 0 120px; }
@@ -160,6 +185,28 @@
     font-size: 14px;
   }
 
+  /* про це писали */
+  .press-label {
+    color: var(--muted);
+    font-size: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .press a {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 12px;
+    align-items: baseline;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .press a:hover .press-title { text-decoration: underline; text-underline-offset: 4px; }
+  @media (max-width: 560px) {
+    .press a { grid-template-columns: 1fr auto; }
+    .press .press-title { grid-column: 1 / -1; grid-row: 2; }
+  }
+
   @media (max-width: 900px) {
     .wrap { grid-template-columns: 1fr; gap: 36px; padding: 0 20px; }
     .side { position: static; padding: 40px 0 0; }
@@ -177,10 +224,17 @@
       <button class="toggle" id="themeBtn" title="Тема" aria-label="Тема"><svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
     </div>
 
-    <a class="back" href="index.html">← усі роботи</a>
+    <a class="back" href="/">← портфоліо</a>
 
     <div class="brand">WineTime</div>
     <div class="brand-sub">Гастро-ритейл</div>
+
+    <dl class="passport">
+      <!-- <div><dt class="mono">Рік</dt><dd></dd></div> -->
+      <!-- <div><dt class="mono">Роль</dt><dd></dd></div> -->
+      <div><dt class="mono">Носії</dt><dd>постери, візки, екрани, сітілайти, лайтбокси</dd></div>
+      <div><dt class="mono">Креативів</dt><dd>12</dd></div>
+    </dl>
 
     <div class="block">
       <div class="label">Задача</div>
@@ -199,7 +253,6 @@
     </div>
 
     <button class="contact-btn" id="contactBtn">Написати <kbd>C</kbd></button>
-    <div class="kicker">Ручка для підписання оферу підготовлена.</div>
   </aside>
 
   <main class="feed">
@@ -224,6 +277,23 @@
 
     <div class="shotwide"><img src="img/winetime/instore.webp" alt="Екран у залі"></div>
     <div class="framecap">Екран біля входу.</div>
+
+    <!-- «Про це писали» — наприкінці правої колонки. Для WineTime публікацій немає.
+         Готова розмітка для кейсу «Варто Жити» (MMR — заголовок і дату уточнити):
+    <section class="press">
+      <div class="press-label">Про це писали</div>
+      <a href="https://theinweb.media/kolczentr-vartozhyty-emocziynyy-stan-ukrayincziv/" target="_blank" rel="noopener">
+        <span class="mono">The InWeb</span>
+        <span class="press-title">Колцентр #ВАРТОЖИТИ запустив інформаційну кампанію про емоційний стан українців</span>
+        <span class="mono">12.03.2026 ↗</span>
+      </a>
+      <a href="https://news.online.ua/mi-konsultujemo-bezkostovno-kol-centr-vartoziti-zapustiv-kampaniiu-dlia-pidtrimki-ukrayinciv-902378/" target="_blank" rel="noopener">
+        <span class="mono">online.ua</span>
+        <span class="press-title">«Ми консультуємо безкоштовно». Кол-центр #ВАРТОЖИТИ запустив кампанію для підтримки українців</span>
+        <span class="mono">18.03.2026 ↗</span>
+      </a>
+    </section>
+    -->
   </main>
 
 </div>
