@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inzhur — Іван Мандровний</title>
+<meta name="description" content="Inzhur: 7 банерів для паркану будівництва — порада про інвестиції мовою будівельника">
+<meta property="og:title" content="Inzhur — Іван Мандровний">
+<meta property="og:description" content="Inzhur: 7 банерів для паркану будівництва — порада про інвестиції мовою будівельника">
+<meta property="og:image" content="https://mandrovnyi.cc/img/inzhur/banner-01.webp">
+<script>
+  try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/folders.css">
+<script src="/posts.js"></script>
+<link rel="expect" href="#rendered" blocking="render">
+<style>
+  /* Кейс відкритий третьою вкладкою-«файлом» поверх папки «Портфоліо». Базові стилі — folders.css */
+  .cv img { display: block; max-width: 100%; height: auto; }
+  .cv .stack::after { display: none; }
+  .cv .sheet.front { padding: 28px 40px 56px; view-transition-name: folder-case; }
+  ::view-transition-new(folder-case) { animation: case-in .45s cubic-bezier(.3,.9,.3,1) both; }
+  ::view-transition-old(folder-case) { animation-duration: .3s; }
+  @keyframes case-in { from { transform: translate(10px, 10px); opacity: 0; } }
+
+  .cv .tab-case { gap: 12px; }
+  .cv .tab .x { color: var(--muted); font-size: 15px; text-decoration: none; line-height: 1; margin-right: -6px; }
+  .cv .tab .x:hover { color: var(--text); }
+
+  .shead { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 40px; }
+  .shead .back { color: var(--muted); text-decoration: none; font-size: 14px; }
+  .shead .back:hover { color: var(--text); }
+
+  /* шапка кейсу й паспорт */
+  .chead { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .cv h1.ctitle { font-size: 20px; font-weight: 500; line-height: 1.375; margin: 10px 0 4px; }
+  .muted { color: var(--muted); }
+  .pass { display: grid; grid-template-columns: auto minmax(0, 340px); gap: 14px 40px; margin: 0; }
+  .pass div { display: flex; flex-direction: column; gap: 6px; }
+  .pass dt { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .pass dd { margin: 0; font-size: 15px; line-height: 1.45; }
+
+  /* Було — фото паркану без обробки */
+  .photo { margin: 28px 0 0; }
+  .photo img { width: 100%; height: auto; border-radius: 16px; }
+  .photo figcaption { margin-top: 10px; }
+
+  /* розділи */
+  .sections { margin-top: 36px; }
+  .tsec { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 32px; padding-block: 30px; border-top: 1px solid var(--line); }
+  .tsec:first-child { border-top: 0; padding-top: 0; }
+  .tsec .k { font-size: 14px; color: var(--muted); display: flex; gap: 10px; align-items: baseline; }
+  .tsec .v { min-width: 0; }
+  .txt { max-width: 620px; line-height: 1.6; }
+  .txt p + p { margin-top: 14px; }
+
+  /* Стало — розгортка паркану, гортається вбік */
+  .slabel { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 12px; border-bottom: 1px solid var(--line); margin: 48px 0 0; }
+  .slabel > span:first-child { color: var(--muted); font-size: 14px; }
+  .fence { background: var(--sunk); border-radius: 16px; padding: 28px 0 22px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-left: 22px; -webkit-overflow-scrolling: touch; margin-top: 26px; }
+  .track { width: max-content; min-width: 100%; }
+  .dim { display: flex; align-items: center; gap: 10px; padding: 0 28px 18px; }
+  .dim .ln { flex: 1; height: 1px; background: var(--muted); position: relative; min-width: 200px; }
+  .dim .ln::before, .dim .ln::after { content: ""; position: absolute; top: -5px; width: 1px; height: 11px; background: var(--muted); }
+  .dim .ln::before { left: 0; }
+  .dim .ln::after { right: 0; }
+  .fence-in { display: flex; align-items: flex-end; padding: 0 28px; width: max-content; }
+  .sec { scroll-snap-align: start; display: flex; flex-direction: column; margin: 0; }
+  .cv .sec img { height: 300px; width: auto; max-width: none; background: #fff; }
+  .sec figcaption { margin-top: 10px; padding-left: 2px; }
+  .pole { width: 6px; height: 330px; background: #7d8288; border-radius: 2px 2px 0 0; align-self: flex-start; margin-top: -14px; flex: none; }
+  .hint { display: flex; justify-content: space-between; margin-top: 10px; }
+
+  @media (max-width: 960px) {
+    .chead { grid-template-columns: minmax(0, 1fr); }
+    .pass { grid-template-columns: auto minmax(0, 1fr); justify-content: start; }
+    .tsec { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  }
+  @media (max-width: 620px) {
+    .cv .desk { padding: 20px 16px 64px; }
+    .cv .sheet.front { padding: 20px 18px 40px; }
+    .cv .tab { padding: 11px 14px; font-size: 15px; }
+    .cv .tab[aria-selected="false"] { padding-bottom: 17px; }
+    .cv .tab[aria-selected="true"] { padding-bottom: 12px; }
+    .cv .tab .mono { display: none; }
+    .pass { grid-template-columns: minmax(0, 1fr); }
+    .cv .sec img { height: 220px; }
+    .pole { height: 250px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tab { transition: none; } }
+</style>
+</head>
+<body class="cv">
+
+<div class="desk">
+
+  <nav class="tabs" role="tablist" aria-label="Розділи сайту">
+    <a class="tab" role="tab" href="/" aria-selected="false" tabindex="-1">Портфоліо <span class="mono">8</span></a>
+    <span class="tab tab-case" role="tab" aria-selected="true">Inzhur <a class="x" href="/" aria-label="Закрити кейс">×</a></span>
+    <a class="tab" role="tab" href="/blog" aria-selected="false" tabindex="-1">Блог <span class="mono" id="blogCount">1</span></a>
+  </nav>
+  <script>document.getElementById('blogCount').textContent = window.visiblePosts().length;</script>
+
+  <div class="stack">
+    <article class="sheet front" role="tabpanel" aria-label="Кейс Inzhur">
+      <div class="shead">
+        <a class="back" href="/">← Портфоліо</a>
+        <button class="toggle" type="button" title="Тема" aria-label="Тема"><svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button>
+      </div>
+
+      <header class="chead">
+        <div><span class="mono">Кейс 02</span><h1 class="ctitle">Inzhur</h1><span class="muted">Інвестиції в нерухомість · 7 банерів для паркану будівництва</span></div>
+        <dl class="pass">
+          <div><dt>Коли</dt><dd>Зима 2025</dd></div>
+          <div><dt>Роль</dt><dd>Creative (Copy &amp; Art)</dd></div>
+        </dl>
+      </header>
+
+      <figure class="photo"><img src="/img/inzhur/fence-before.webp" width="1280" height="960" alt="Паркан будівництва Inzhur до редизайну"><figcaption class="mono">Було</figcaption></figure>
+
+      <div class="sections">
+        <section class="tsec"><div class="k">Задача</div><div class="v"><div class="txt">
+          <p>Inzhur будує, а будову треба чимось огородити. Паркан стоїть місяцями, і повз нього щодня проходять сотні людей. Задача — зробити з огорожі рекламу, яку хочеться дочитати до останньої секції.</p>
+        </div></div></section>
+
+        <section class="tsec"><div class="k">Ідея</div><div class="v"><div class="txt">
+          <p>За парканом — будова. А в будівництва й фінансів більше спільного, ніж здається. Фундамент потрібен і там, і там. Запасний ключ краще мати і там, і там. І дах головне, щоб не знесло, — теж і там, і там.</p>
+          <p>Тож кожен банер — порада про інвестиції, сказана мовою будівельника. Думку тримає текст, а малюнок її лише доповнює.</p>
+        </div></div></section>
+      </div>
+
+      <div class="slabel"><span>Стало</span><span class="mono">7 секцій</span></div>
+      <div class="fence" tabindex="0" aria-label="Розгортка паркану, гортайте вбік">
+        <div class="track">
+          <div class="dim" aria-hidden="true"><span class="mono">01</span><span class="ln"></span><span class="mono">07</span></div>
+          <div class="fence-in">
+          <span class="pole" aria-hidden="true"></span>
+          <figure class="sec"><img src="/img/inzhur/banner-01.webp" width="1828" height="900" alt="Тримаємо рівень української інвестиційної REIT компанії"><figcaption class="mono">Секція 01</figcaption></figure>
+          <span class="pole" aria-hidden="true"></span>
+          <figure class="sec"><img src="/img/inzhur/banner-02.webp" width="1192" height="900" alt="Перш ніж зводити прибуток — заклади основу" loading="lazy"><figcaption class="mono">Секція 02</figcaption></figure>
+          <span class="pole" aria-hidden="true"></span>
+          <figure class="sec"><img src="/img/inzhur/banner-03.webp" width="1192" height="900" alt="Можна рухатися швидше, але є ризик впасти" loading="lazy"><figcaption class="mono">Секція 03</figcaption></figure>
+          <span class="pole" aria-hidden="true"></span>
+          <figure class="sec"><img src="/img/inzhur/banner-04.webp" width="1192" height="900" alt="Май запасний ключ, навіть коли впевнений у собі" loading="lazy"><figcaption class="mono">Секція 04</figcaption></figure>
+          <span class="pole" aria-hidden="true"></span>
+          <figure class="sec"><img src="/img/inzhur/banner-05.webp" width="1192" height="900" alt="Не бери участь в авантюрах, які тягнуть на дно" loading="lazy"><figcaption class="mono">Секція 05</figcaption></figure>
+          <span class="pole" aria-hidden="true"></span>
+          <figure class="sec"><img src="/img/inzhur/banner-06.webp" width="1192" height="900" alt="Головне тримати голову на місці, коли ринок штормить" loading="lazy"><figcaption class="mono">Секція 06</figcaption></figure>
+          <span class="pole" aria-hidden="true"></span>
+          <figure class="sec"><img src="/img/inzhur/banner-07.webp" width="1192" height="900" alt="Будуємо не тільки стіни, а й підхід до інвестицій" loading="lazy"><figcaption class="mono">Секція 07</figcaption></figure>
+          <span class="pole" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+      <div class="hint"><span class="mono">Розгортка паркану</span><span class="mono">Гортайте →</span></div>
+    </article>
+
+    <!-- Портфоліо — задня папка, вміст на / -->
+    <div class="sheet back" data-folder="portfolio" aria-hidden="true"></div>
+  </div>
+</div>
+
+<span id="rendered" hidden></span>
+<script src="/folders.js"></script>
+</body>
+</html>
