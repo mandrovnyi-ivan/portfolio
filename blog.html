@@ -72,6 +72,7 @@
 
     function cover(c) {
       if (c.brand) return '<div class="cover cover-brand" style="background:' + esc(c.bg) + '"><span class="b">' + esc(c.brand) + '</span></div>';
+      if (c.pin) return '<div class="cover cover-type"><span class="pin" aria-hidden="true">' + esc(c.pin) + '</span></div>';
       if (c.big) return '<div class="cover cover-type"><span class="big" aria-hidden="true">' + esc(c.big) + '</span></div>';
       return '<div class="cover cover-type"><span class="word" aria-hidden="true">' + esc(c.word) + '</span></div>';
     }

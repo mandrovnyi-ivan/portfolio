@@ -95,7 +95,7 @@
 
   /* ---- клавіатура: C — написати, ←/→ — папки ---- */
   var contactBtn = document.getElementById('contactBtn');
-  function write() { window.location.href = 'mailto:mandrovnyi@gmail.com'; }
+  function write() { window.location.href = 'mailto:imandrovnyi@gmail.com'; }
   if (contactBtn) contactBtn.addEventListener('click', write);
   document.addEventListener('keydown', function (e) {
     if (e.metaKey || e.ctrlKey || e.altKey) return;

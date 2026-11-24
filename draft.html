@@ -37,7 +37,7 @@
     var p = window.POSTS.filter(function (x) { return x.n === n; })[0];
     /* поза режимом перегляду чернеток не існує */
     if (!p || !window.PREVIEW) { location.replace('/blog'); return; }
-    if (!p.draft) { location.replace(p.url); return; }
+    if (!p.draft || p.url) { location.replace(window.postUrl(p)); return; }
     if (q.has('preview')) document.querySelector('.back').href = '/blog?preview';
     document.title = p.title + ' — чернетка';
     document.getElementById('no').textContent = window.postNo(p.n);

@@ -1,10 +1,15 @@
 /* Статті блогу. Новіші — зверху.
    draft: true — чернетка: видно тільки в режимі перегляду (localhost або ?preview в адресі).
+     Чернетка без url відкриває заготовку /draft?n=N; з url — свою сторінку (на ній теж noindex і перевірка режиму).
    Щоб опублікувати: draft: false, вписати date і url сторінки статті.
    type: roz — розбір, ese — есе, prov — провокація.
    cover: { big: '10' } або { word: 'Слово' } — типографічна на --sunk;
-          { brand: 'Назва', bg: '#колір' } — назва бренду на кольорі бренду. */
+          { brand: 'Назва', bg: '#колір' } — назва бренду на кольорі бренду;
+          { pin: 'Зберегти' } — червона кнопка Pinterest на --sunk. */
 window.POSTS = [
+  { n: 9, type: 'roz',  draft: true, date: '27.10.2026', url: '/blog-comfy-email',
+    title: 'Переписав лист Comfy. Шапку й підвал не чіпав', cover: { brand: 'Comfy', bg: '#5cb93a' } },
+  { n: 8, type: 'ese',  draft: true, title: 'Як розвинути надивленість: воровать так ідеї, воровать так мілліон', cover: { pin: 'Зберегти' } },
   { n: 7, type: 'ese',  draft: true, title: 'Як я б проводив тестове для креативників', cover: { word: 'Тестове' } },
   { n: 6, type: 'prov', draft: true, title: 'Як безкоштовно відправити що завгодно Новою поштою', cover: { big: '0 ₴' } },
   { n: 5, type: 'roz',  draft: true, title: 'ПриватБанк на молодіжній тусовці', cover: { brand: 'ПриватБанк', bg: '#7dbb2f' } },
@@ -37,6 +42,7 @@ window.postNo = function (n) { return '№ ' + String(n).padStart(3, '0'); };
 
 window.postUrl = function (p) {
   if (!p.draft) return p.url;
-  var q = new URLSearchParams(location.search).has('preview') ? '&preview' : '';
-  return '/draft?n=' + p.n + q;
+  var preview = new URLSearchParams(location.search).has('preview');
+  if (p.url) return p.url + (preview ? '?preview' : '');
+  return '/draft?n=' + p.n + (preview ? '&preview' : '');
 };
