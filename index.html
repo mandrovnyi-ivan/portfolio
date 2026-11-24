@@ -1,8 +1,21 @@
 <!doctype html>
 <html lang="uk" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Іван Мандровний</title>
-<meta name="description" content="Придумую рекламу українським брендам. Здебільшого без запиту з їхнього боку.">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Іван Мандровний — Креативний копірайтер</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="Створюю креативні рекламні кампанії, продуктові тексти й контент у соцмережах для IT, web3, ритейлу, цифрових сервісів та соціальних ініціатив.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mandrovnyi.cc/">
+<meta property="og:title" content="Іван Мандровний — Креативний копірайтер">
+<meta property="og:description" content="Створюю креативні рекламні кампанії, продуктові тексти й контент у соцмережах для IT, web3, ритейлу, цифрових сервісів та соціальних ініціатив.">
+<meta property="og:image" content="https://mandrovnyi.cc/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mandrovnyi.cc/img/og-image.jpg">
 <script>
   /* тема — та сама, що на решті сайту, ставиться до першого рендера */
   try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -233,14 +246,20 @@ html[data-theme="dark"]  .i-sun  { display:none; }
 .pigeon.left span { transform:scaleX(-1); }
 @media (max-width:620px) {
   .hero { min-height:0; padding-top:80px; }
-  .h-left { grid-column:1 / 8; }
-  .lamp { grid-column:7 / 13; height:300px; } .hero { --cw-r:4px; }
+  .hero { --cw-r:4px; --lh:262px; } /* висота люстри = висота ролей + Projects + Concepts, щоб низ портрета був по низу Concepts */
   .h-name { font-size:28px; }
-  .avatar { width:136px; margin-left:-12px; }
-  .h-me { display:block; } .h-roles { margin-top:18px; } .h-list:not(.h-list2) { margin-top:30px; } /* на телефоні праворуч люстра — посади під портретом */
-  .lamp { align-self:start; margin-top:64px; margin-bottom:0; }
-  .h-note { grid-column:1 / 13; grid-row:2; height:auto; padding-right:0; padding-bottom:0; margin-top:16px; margin-bottom:0; }
+  /* телефон: ліва колонка й рядок з портретом розпадаються на клітинки сітки героя — ім'я, ролі, Projects, Concepts ліворуч; люстра праворуч, портрет під свічками */
+  .h-left, .h-me { display:contents; }
+  .h-top { grid-column:1 / 13; grid-row:1; }
+  .h-roles { grid-column:1 / 8; grid-row:2; margin-top:0; position:relative; z-index:2; }
+  .h-list { grid-column:1 / 8; grid-row:3; margin-top:30px; position:relative; z-index:2; }
+  .h-list2 { grid-row:4; margin-top:22px; }
+  .lamp { grid-column:7 / 13; grid-row:2 / 5; height:var(--lh); align-self:end; margin:0; }
+  /* центр портрета — під гаком люстри: 64.96% ширини стовпа (614/1452 від висоти) від правого краю */
+  .h-me .avatar { grid-column:7 / 13; grid-row:2 / 5; align-self:end; justify-self:end; width:136px; margin:0 calc(var(--cw-r) + var(--lh) * 614 / 1452 * .6496 - 68px) 0 0; position:relative; z-index:1; }
+  .h-note { grid-column:1 / 13; grid-row:5; height:auto; padding-right:0; padding-bottom:0; margin-top:16px; margin-bottom:0; }
   .pigeon { font-size:1.9px; }
+  .frame-bot, .hero .clock { display:none; }
 }
 /* вузькі телефони: годинник 14px уже налазить на список — менший кегль, лінія з «Auto.ria» та сама */
 @media (max-width:380px) { .hero .clock { font-size:12px; } }
@@ -404,7 +423,7 @@ main > .case + .case { border-top:1px solid var(--line); padding-top:44px; }
 .cp-box.shake { animation:cpShake .35s; }
 @keyframes cpShake { 20%,60% { transform:translateX(-6px); } 40%,80% { transform:translateX(6px); } }
 @media (max-width:620px) {
-  .ax-l { grid-column:1 / 13; } .ax-cloth { margin-left:-8%; }
+  .ax-l { grid-column:1 / 13; } .ax-cloth { margin-left:0; width:100%; }
   .ax-shot { grid-column:3 / 11; grid-row:2; width:100%; margin-top:28px; }
   .ax-wt, .ax-bot { grid-column:1 / 13; } .ax-arr { grid-column:1 / 13; justify-self:start; margin:10px 0; transform:rotate(90deg); animation:none; }
 }
@@ -472,6 +491,7 @@ main > .case + .case { border-top:1px solid var(--line); padding-top:44px; }
 .iz-big { grid-column:7 / 13; grid-row:1 / 3; margin:0; align-self:end; justify-self:end; width:115%; } /* верх будівлі заходить у рядок карток, низ — по низу тексту; росте вліво, права межа колонки та сама */
 .iz-big img { width:100%; display:block; -webkit-mask-image:linear-gradient(to bottom, #000 80%, transparent); mask-image:linear-gradient(to bottom, #000 80%, transparent); } /* будівля з прозорим фоном — без рамки, фону й заокруглень; м'який обріз унизу */
 @media (max-width:620px) {
+  .iz-wm { font-size:28cqw; }
   .iz-cards { grid-column:1 / 13; } .iz-note { grid-column:1 / 13; grid-row:2; } .iz-big { grid-column:1 / 13; grid-row:3; margin:0; width:100%; } .iz-low { row-gap:22px; }
 }
 /* ================= КОНЦЕПТИ ================= */
@@ -510,7 +530,7 @@ main > .case + .case { border-top:1px solid var(--line); padding-top:44px; }
       <svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg>
     </button></div>
       <div class="h-me"><div class="avatar"><div class="portrait" id="portrait"></div></div>
-      <p class="h-roles">Copywriter<br>Creative &amp; Advertising<br>UX writing</p></div>
+      <p class="h-roles">Креативний<br>копірайтер</p></div>
       <div class="h-list"><span>Projects</span><ul>
         <li><span class="th"><img src="/img/new/lg-vartozhyty.webp" alt=""></span><span>#ВАРТОЖИТИ,</span></li><li><span class="th"><img src="/img/new/lg-aurex.webp" alt=""></span><span>Aurex,</span></li><li><span class="th"><img src="/img/new/lg-dou.webp" alt=""></span><span>DOU,</span></li><li><span class="th"><img src="/img/new/lg-winetime.webp" alt=""></span><span>WineTime,</span></li><li><span class="th"><img src="/img/new/lg-inzhur.webp" alt=""></span><span>Inzhur,</span></li><li><span class="th"><img src="/img/new/lg-englishdom.webp" alt=""></span><span>Englishdom</span></li>
       </ul></div>
@@ -557,7 +577,7 @@ main > .case + .case { border-top:1px solid var(--line); padding-top:44px; }
     </div></div>
     <div class="clock"><span id="kdate"></span> · <span id="ktime"></span> · Київ</div>
     <div class="h-note">
-      <p class="h-cred">Пишу тексти, які фотографують, пересилають і цитують. Коротко — бо кожне зайве слово відбирає в бренду увагу.</p>
+      <p class="h-cred">Створюю креативні рекламні кампанії, продуктові тексти й контент у&nbsp;соцмережах для IT, web3, ритейлу, цифрових сервісів та соціальних ініціатив.</p>
     </div>
   </section>
   <section class="case vt" id="vartozhyty">
