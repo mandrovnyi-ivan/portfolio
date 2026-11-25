@@ -216,8 +216,6 @@ p { margin:0; }
 .glows i { position:absolute; width:22%; aspect-ratio:1; transform:translate(-50%,-55%); border-radius:50%; pointer-events:none;
   background:radial-gradient(circle, rgba(255,240,200,.85) 0%, rgba(255,226,160,.35) 22%, rgba(255,214,140,0) 62%); opacity:0; transition:opacity .3s ease; }
 .lamp.lit .glows i { opacity:1; }
-.lamp-hit { position:absolute; left:4%; top:7%; width:56%; height:38%; cursor:pointer; border-radius:40%; background:none; border:0; }
-.lamp-hit:focus-visible { outline:1px dashed var(--muted); outline-offset:4px; }
 /* портрет і перемикач під люстрою */
 /* портрет — одразу під ім'ям */
 .avatar { position:relative; width:210px; margin:-8px 0 6px -18px; }
@@ -636,7 +634,6 @@ main > .case + .case { border-top:1px solid var(--line); padding-top:44px; }
       <div class="swing"><div class="swing2">
       <img src="/img/new/lamp-chand.webp" alt=""><img class="pole-candle" src="/img/new/lamp-pole.webp" alt=""><div class="glows"><i style="left:53.42%;top:21.21%"></i><i style="left:16.45%;top:21.21%"></i><i style="left:44.46%;top:21.83%"></i><i style="left:25.57%;top:21.83%"></i><i style="left:65.31%;top:29.89%"></i><i style="left:5.05%;top:29.96%"></i><i style="left:52.28%;top:30.65%"></i><i style="left:16.94%;top:30.65%"></i></div>
       </div></div>
-      <button class="lamp-hit" id="lampHit" type="button" aria-label="Перемкнути тему"></button>
       <pre class="pigeon left" id="pg1" aria-hidden="true"><span>
 
                          .+*=
@@ -1039,7 +1036,7 @@ window.TRACK_MOUSE = false;</script>
   tick(); setInterval(tick,1000);
 
   // ---------- тема: миттєво, як на поточній головній (звук, кепка); люстра світить лише в темній ----------
-  var lamp=document.getElementById('lamp'), btn=document.getElementById('themeBtn'), hit=document.getElementById('lampHit'), snd=new Audio('/sound/toggle.mp3');
+  var lamp=document.getElementById('lamp'), btn=document.getElementById('themeBtn'), snd=new Audio('/sound/toggle.mp3');
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var AC=window.AudioContext||window.webkitAudioContext, actx=null, sbuf=null, sraw=null;
   fetch('/sound/toggle.mp3').then(function(r){return r.arrayBuffer();}).then(function(b){ sraw=b; if(actx) decode(); }).catch(function(){});
@@ -1058,7 +1055,7 @@ window.TRACK_MOUSE = false;</script>
     setTheme(root.dataset.theme !== 'dark');
     sync();
   }
-  btn.addEventListener('click',toggle); hit.addEventListener('click',toggle);
+  btn.addEventListener('click',toggle);
   sync();
 
   // ---------- голуби ----------
