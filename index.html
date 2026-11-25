@@ -1041,10 +1041,20 @@ window.TRACK_MOUSE = false;</script>
   // ---------- тема: миттєво, як на поточній головній (звук, кепка); люстра світить лише в темній ----------
   var lamp=document.getElementById('lamp'), btn=document.getElementById('themeBtn'), hit=document.getElementById('lampHit'), snd=new Audio('/sound/toggle.mp3');
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var AC=window.AudioContext||window.webkitAudioContext, actx=null, sbuf=null, sraw=null;
+  fetch('/sound/toggle.mp3').then(function(r){return r.arrayBuffer();}).then(function(b){ sraw=b; if(actx) decode(); }).catch(function(){});
+  function decode(){ if(!sraw||sbuf) return; actx.decodeAudioData(sraw.slice(0),function(d){ sbuf=d; },function(){}); }
+  // iOS дозволяє звук лише після першого дотику — «будимо» аудіо на першому ж торканні будь-де на сторінці
+  function unlock(){ if(actx||!AC) return; actx=new AC(); decode(); var s=actx.createBufferSource(); s.buffer=actx.createBuffer(1,1,22050); s.connect(actx.destination); s.start(0); }
+  ['pointerdown','touchstart','keydown'].forEach(function(e){ addEventListener(e,unlock,{once:true,capture:true,passive:true}); });
+  function playToggle(){
+    if(actx&&sbuf){ if(actx.state==='suspended') actx.resume(); var s=actx.createBufferSource(); s.buffer=sbuf; s.connect(actx.destination); s.start(0); return; }
+    try{ snd.currentTime=0; var p=snd.play(); if(p) p.catch(function(){}); }catch(e){}
+  }
   function isLight(){ return root.dataset.theme!=='dark'; }
   function sync(){ lamp.classList.toggle('lit',!isLight()); }
   function toggle(){
-    try{ snd.currentTime=0; var p=snd.play(); if(p) p.catch(function(){}); }catch(e){}
+    playToggle();
     setTheme(root.dataset.theme !== 'dark');
     sync();
   }
